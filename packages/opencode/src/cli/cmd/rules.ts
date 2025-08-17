@@ -1,5 +1,5 @@
 import { cmd } from "./cmd"
-import { UI } from "../ui"
+// import { UI } from "../ui" // Unused import
 import { Config } from "../../config/config"
 import { App } from "../../app/app"
 
@@ -7,7 +7,7 @@ const RulesListCommand = cmd({
   command: "list",
   describe: "list all instruction rules",
   async handler() {
-    await App.provide({ cwd: process.cwd() }, async (app) => {
+    await App.provide({ cwd: process.cwd() }, async () => {
       const config = await Config.get()
       const rules = config.rules?.rules || []
       
@@ -32,7 +32,7 @@ const RulesStatusCommand = cmd({
   command: "status",
   describe: "show instruction rules system status",
   async handler() {
-    await App.provide({ cwd: process.cwd() }, async (app) => {
+    await App.provide({ cwd: process.cwd() }, async () => {
       const config = await Config.get()
       const rulesConfig = config.rules
       
@@ -59,4 +59,7 @@ export const RulesCommand = cmd({
       .command(RulesStatusCommand)
       .demandCommand(1, "You need to specify a subcommand")
       .help(),
+  handler: () => {
+    // Default handler - yargs will show help
+  },
 })

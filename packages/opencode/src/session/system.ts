@@ -3,7 +3,7 @@ import { Ripgrep } from "../file/ripgrep"
 import { Global } from "../global"
 import { Filesystem } from "../util/filesystem"
 import { Config } from "../config/config"
-import { Rule } from "../rules/types"
+import type { Rule } from "../rules/types"
 import path from "path"
 import os from "os"
 
@@ -55,15 +55,16 @@ export namespace SystemPrompt {
     ]
   }
 
-  const LOCAL_RULE_FILES = [
-    "AGENTS.md",
-    "CLAUDE.md",
-    "CONTEXT.md", // deprecated
-  ]
-  const GLOBAL_RULE_FILES = [
-    path.join(Global.Path.config, "AGENTS.md"),
-    path.join(os.homedir(), ".claude", "CLAUDE.md"),
-  ]
+  // Legacy rule files - now replaced by configurable rules system
+  // const LOCAL_RULE_FILES = [
+  //   "AGENTS.md",
+  //   "CLAUDE.md", 
+  //   "CONTEXT.md", // deprecated
+  // ]
+  // const GLOBAL_RULE_FILES = [
+  //   path.join(Global.Path.config, "AGENTS.md"),
+  //   path.join(os.homedir(), ".claude", "CLAUDE.md"),
+  // ]
   function getDefaultRules(): Rule[] {
     return [
       {
