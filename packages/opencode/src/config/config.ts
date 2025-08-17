@@ -14,6 +14,7 @@ import matter from "gray-matter"
 import { Flag } from "../flag/flag"
 import { Auth } from "../auth"
 import { type ParseError as JsoncParseError, parse as parseJsonc, printParseErrorCode } from "jsonc-parser"
+import { RulesConfig } from "../rules/types"
 
 export namespace Config {
   const log = Log.create({ service: "config" })
@@ -426,6 +427,7 @@ export namespace Config {
             .optional(),
         })
         .optional(),
+      rules: RulesConfig.optional(),
     })
     .strict()
     .openapi({

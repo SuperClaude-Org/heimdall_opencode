@@ -18,6 +18,7 @@ import { DebugCommand } from "./cli/cmd/debug"
 import { StatsCommand } from "./cli/cmd/stats"
 import { McpCommand } from "./cli/cmd/mcp"
 import { GithubCommand } from "./cli/cmd/github"
+import { RulesCommand } from "./cli/cmd/rules"
 
 const cancel = new AbortController()
 
@@ -76,6 +77,7 @@ const cli = yargs(hideBin(process.argv))
   .command(DebugCommand)
   .command(AuthCommand)
   .command(AgentCommand)
+  .command(RulesCommand)
   .command(UpgradeCommand)
   .command(ServeCommand)
   .command(ModelsCommand)
