@@ -5,10 +5,14 @@ export const RuleSchema = z.object({
   name: z.string(),
   description: z.string().optional(),
   enabled: z.boolean().default(true),
-  priority: z.number().default(0),
-  pattern: z.string().optional(),
-  action: z.enum(["allow", "deny", "warn"]),
-  metadata: z.record(z.any()).optional(),
+  priority: z.number().default(0), // Higher = loaded first
+  pattern: z.string(), // File pattern: "AGENTS.md", "**/*.md", "~/.claude/*.md"
+  action: z.enum(["allow", "deny", "warn"]), // allow=load, deny=skip, warn=load with warning
+  metadata: z.object({
+    type: z.enum(["local", "global", "absolute", "glob"]).optional(),
+    weight: z.number().default(1).optional(), // Importance weight for AI
+    includeHeader: z.boolean().default(true).optional(), // Add file header
+  }).optional(),
 })
 
 export const RulesConfig = z.object({

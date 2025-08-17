@@ -5,7 +5,7 @@ import { App } from "../../app/app"
 
 const RulesListCommand = cmd({
   command: "list",
-  describe: "list all rules",
+  describe: "list all instruction rules",
   async handler() {
     await App.provide({ cwd: process.cwd() }, async (app) => {
       const config = await Config.get()
@@ -30,7 +30,7 @@ const RulesListCommand = cmd({
 
 const RulesStatusCommand = cmd({
   command: "status",
-  describe: "show rules system status",
+  describe: "show instruction rules system status",
   async handler() {
     await App.provide({ cwd: process.cwd() }, async (app) => {
       const config = await Config.get()
@@ -52,7 +52,7 @@ const RulesStatusCommand = cmd({
 
 export const RulesCommand = cmd({
   command: "rules",
-  describe: "manage security and policy rules",
+  describe: "manage AI instruction rules",
   builder: (yargs) =>
     yargs
       .command(RulesListCommand)
