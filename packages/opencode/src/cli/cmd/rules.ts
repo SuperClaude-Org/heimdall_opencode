@@ -59,7 +59,7 @@ export const RulesCommand = cmd({
       .command(RulesStatusCommand)
       .demandCommand(1, "You need to specify a subcommand")
       .help(),
-  handler: () => {
-    // Default handler - yargs will show help
+  handler() {
+    // This will not be called due to demandCommand(1)
   },
 })
